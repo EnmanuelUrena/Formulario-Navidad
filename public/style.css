@@ -1,0 +1,177 @@
+*{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f3f4f6;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  width: 38%;
+  height: 70%;
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.main__title{
+  font-size: 1rem;
+  text-align: center;
+  color: #1f3a89;
+  margin: 5px 0px;
+}
+
+.main__subtitle{
+  margin: 10px 0px 15px 0px;
+}
+
+.main__subtitle::after{
+  content: "*";
+  color: red;
+}
+
+.main__form{
+  display: flex;
+  flex-direction: column;
+}
+
+.main__form__section{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+
+.main__form__section__column{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.main__form__section__column label[id="req"]::after{
+  content: "*";
+  color: red;
+}
+
+.main__form__section__column select{
+  width: 95%;
+  height: 35px;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.main__form__section__column input{
+  width: 95%;
+  height: 35px;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.main__form__section__column input:invalid{
+  border: none;
+  border: solid 1px darkred;
+  padding: 5px;
+  border-radius: 5px;
+  width: 95%;
+  height: 35px;
+}
+
+.main__form__section__column select:invalid{
+  width: 95%;
+  height: 35px;
+  border: solid 1px darkred;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+
+.main__form__section__column label{
+  margin-top: 10px;
+}
+
+.main__form__section__column label[for="id"]{
+  margin-top: 29px;
+}
+
+.main__form__minor{
+  margin-top: 16px;
+}
+
+.main__form__minor__container{
+  display: none;
+  padding: 15px 0px 0px 0px;
+}
+
+.main__form__minor__container input{
+  width: 97%;
+  height: 35px;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.main__form__covid{
+  margin: 15px 0px;
+}
+
+.main__form__covid p::before{
+  content: "*";
+  color: red;
+}
+
+.main__form span{
+  color:red;
+}
+
+.main__form__fieldset{
+  border: solid 1px darkred;
+  text-align: center;
+  margin-top: 16px;
+  padding: 10px;
+}
+
+.main__form__fieldset h3{
+ margin: 8px;
+ font-size: 1rem;
+}
+
+.main__form__fieldset p:last-child{
+  margin: 10px 0px 12px 0px;
+}
+
+.main__form__fieldset p{
+  font-size: 0.9rem;
+}
+
+.main__form__submit{
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #1f3a89;
+  color: #FFF;
+  align-self: flex-end;
+}
+
+
+.footer{
+  margin: 20px;
+}
+
+.footer p{
+  font-size: small;
+  color: gray;
+}

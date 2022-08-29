@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Formulario Registro Navidad</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <img class="header__logo" src="images/logo-presidencia-center-espacio.png" alt="Logo Presidencia de la República Dominicana" height="200" width="400">
+  </header>
+  <main class="main">
+    <h2 class="main__title">FORMULARIO DE REGISTRO NAVIDAD EN EL PALACIO</h2>
+    <span class="main__subtitle">Todos los campos son obligatorios</span>
+    <form class="main__form" id="main_form" autocomplete="off" method="post" action="/">
+      <section class="main__form__section">
+        <div class="main__form__section__column">
+          <label for="name" id="req">Nombre Completo</label>
+          <input type="text" name="name" id="name" placeholder="Nombre Completo" required>
+          <label for="gender" id="req">Sexo</label>
+          <select name="gender" id="gender" required>
+            <option value="">Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+          <label for="phone" id="req">Teléfono</label>
+          <input type="text" name="phone" id="phone" placeholder="Teléfono" required>
+          <label for="idtype" id="req">Cédula/Pasaporte</label>
+          <select name="idtype" id="idtype" required>
+            <option value="cedula">Cédula</option>
+            <option value="pasaporte">Pasaporte</option>
+          </select>
+        </div>
+        <div class="main__form__section__column">
+          <label for="lastname" id="req">Apellidos</label>
+          <input type="text" name="lastname" id="lastname" placeholder="Apellidos" required>
+          <label for="date" id="req">Fecha de nacimiento</label>
+          <input type="date" name="date" id="date" required>
+          <label for="email">Correo</label>
+          <input type="email" name="email" id="email" placeholder="Correo">
+          <label for="id"></label>
+          <input type="text" name="id" id="id" placeholder="Cédula/Pasaporte"required>
+        </div>
+      </section>
+      <section class="main__form__minor">
+        <input type="checkbox" name="minor" id="minor">
+        <label for="minor">Viene con personas menores de edad</label>
+        <div class="main__form__minor__container" id="minordisplay">
+          <label for="mname1">Nombre del primer menor de edad</label>
+          <input type="text" name="mname1" id="mname1" placeholder="Nombre del menor">
+          <label for="mname2">Nombre del segundo menor de edad</label>
+          <input type="text" name="mname2" id="mname2" placeholder="Nombre del menor">
+          <label for="mname3">Nombre del tercer menor de edad</label>
+          <input type="text" name="mname3" id="mname3" placeholder="Nombre del menor">
+        </div>
+      </section>
+      <section class="main__form__covid">
+        <p>Presentación obligatoria de tarjeta de vacunación contra COVID-19 para todas las personas mayores de 12 años de edad con al menos dos dosis aplicadas o prueba negativa de al menos una semana.</p>
+      </section>
+      <span>USO OBLIGATORIO DE MASCARILLAS</span>
+      <fieldset class="main__form__fieldset">
+        <h3>POR MOTIVOS DE SEGURIDAD:</h3>
+        <p> Presentarse 15 minutos antes para el chequeo de seguridad.</p>
+        <p> Cada visitante debe llevar su documento de identidad.</p>
+        <p> Soló se permitirá la entrada a las personas inscritas en el formulario.</p>
+        <p> Presentarse 15 minutos antes para el chequeo de seguridad.</p>
+        <p>No esta permitido ingresar con mochilas o bultos, comidas o bebidas.</p>
+        <p>Pueden tomar fotografías.</p>
+        <p>PARA INFORMACION ADICIONAL, COMUNICARSE AL 809-695-8000 EXT. 2073</p>
+      </fieldset>
+      <input class="main__form__submit" type="submit" value="ENVIAR" id="submit">
+    </form>
+  </main>
+  <footer class="footer">
+    <p>© 2021 DIECOM, Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
