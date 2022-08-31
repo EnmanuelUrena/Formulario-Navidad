@@ -1,16 +1,18 @@
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
+import { postForm } from './formController.js';
 
 const app = express();
 
 app.use(express.static('public'));
 app.use(express.json());
 
-const PORT = 3001
+dotenv.config();
+
+const PORT = process.env.PORT || 3001
 
 app.post('/', (req, res) => {
-  const data = req.body;
-  console.log(data);
-  res.redirect('/');
+  postForm(req, res);
 })
 
 app.listen(PORT, () => {

@@ -69,6 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     const data = fillData();
     console.log(data);
-    await postData('http://localhost:3001', data);
+    await postData('http://localhost:3000', data);
   })
 })
