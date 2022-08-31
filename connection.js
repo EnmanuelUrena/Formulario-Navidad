@@ -1,10 +1,11 @@
-import dotenv from 'dotenv';
-import sql from 'mssql';
+import dotenv from 'dotenv'; //Importacion de dotenv
+import sql from 'mssql'; //Importacion de la libreria de sql
 
-dotenv.config();
+dotenv.config(); //Lectura de las variables de entorno
 
-const {DB_USER, PASSWORD, SQL_SERVER, SQL_DATABASE} = process.env;
+const {DB_USER, PASSWORD, SQL_SERVER, SQL_DATABASE} = process.env; // Guardamos las variables de entorno
 
+//Configuracion de la conexion a base de datos
 const dbSettings = {
   user: DB_USER,
   password: PASSWORD,
@@ -18,7 +19,7 @@ const dbSettings = {
 
 export async function getConnection() {
   try {
-    const pool = await sql.connect(dbSettings);
+    const pool = await sql.connect(dbSettings); //Conexion con la base de datos que devuelve un pool
     console.log('DB Connected')
     return pool;
   }catch (error) {
