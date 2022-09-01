@@ -1,36 +1,34 @@
-import {getConnection, sql} from './connection.js'; //Importamos la conexion y la libreria de base de datos
+import {pool} from './connection.js'; //Importamos la pool
 
-async function InsertIntoRegistro (pool, data) {
-  await pool.request() //Hacemos un pool request con los inputs y el query
-      .input('name', sql.NVarChar, data.name)
-      .input('lastname', sql.NVarChar, data.lastname)
-      .input('gender', sql.Char, data.gender)
-      .input('date', sql.Date, data.date)
-      .input('phone', sql.VarChar, data.phone)
-      .input('email', sql.VarChar, data.email)
-      .input('idtype', sql.VarChar, data.idtype)
-      .input('idnumber', sql.VarChar, data.id)
-      .input('minor', sql.Bit, data.minor)
-      .query('INSERT INTO Registros (name, lastname, gender, date, phone, email, idtype, idnumber, minor) VALUES (@name, @lastname, @gender, @date, @phone, @email, @idtype, @idnumber, @minor)')
+//Funcion que ejecuta la query para insertar en la tabla Registros
+async function InsertIntoRegistro (data) {
+  await pool.query('INSERT INTO Registros set ?', [data])
 }
 
-async function InsertIntoMenores(pool, minor) {
-  await pool.request() //Hacemos un pool request con los inputs y el query
-  .input('idnumber', sql.VarChar, minor.id)
-  .input('name', sql.NVarChar, minor.name)
-  .query('INSERT INTO Menores (idnumber, name) VALUES (@idnumber, @name)')
+//Funcion que ejecuta la query para insertar en la tabla Menores
+async function InsertIntoMenores(minor) {
+  await pool.query('INSERT INTO Menores set ?', [minor])
 }
 
+//Funcion que maneja el request para enviar una respuesta con la tabla Registro
 export const getRegistro = async (req, res) => {
-  const pool = await getConnection(); //Llamamos la conexion a base de datos
-  const result = await pool.request().query('SELECT * FROM Registros')
-  res.json(result.recordset)
+  try {
+    const result = await pool.query('SELECT * FROM Registros')
+    res.json(result)
+  } catch (error) {
+    console.error(error)
+  }
 }
 
+//Funcion que maneja el request para enviar una respuesta con la tabla Menores
 export const getMenores = async (req, res) => {
-  const pool = await getConnection(); //Llamamos la conexion a base de datos
-  const result = await pool.request().query('SELECT * FROM Menores') //Hacemos un pool request con el query
-  res.json(result.recordset)
+  try {
+    const result = await pool.query('SELECT * FROM Menores')
+    res.json(result)
+  } catch (error) {
+    console.error(error)
+  }
+  
 }
 
 export const postForm = async (req, res) => {
@@ -43,39 +41,36 @@ export const postForm = async (req, res) => {
     phone: req.body.phone,
     email: req.body.email,
     idtype: req.body.idtype,
-    id: req.body.id,
-    minor: req.body.minor,
-    minors: [
-      {
-        'id': req.body.id,
-        'name': req.body.mname1
-      },
-      {
-        'id': req.body.id,
-        'name': req.body.mname2
-      },
-      {
-        'id': req.body.id,
-        'name': req.body.mname3
-      }
-    ]
+    idnumber: req.body.id,
+    minor: req.body.minor ? true : false,
   }
-
+  let minors = [
+    {
+      'idnumber': req.body.id,
+      'name': req.body.mname1
+    },
+    {
+      'idnumber': req.body.id,
+      'name': req.body.mname2
+    },
+    {
+      'idnumber': req.body.id,
+      'name': req.body.mname3
+    }
+    ]
   try {
-    const pool = await getConnection(); //Llamamos la conexion a base de datos
-
     //En caso de contener menores de edad, se realiza el agregar los menores a la tabla correspondiente
-    if (data.minors) {
-      await InsertIntoRegistro(pool, data); //Insertamos la data en la tabla Registro
-      data.minors.forEach(async minor => {
+    if (data.minor) {
+      await InsertIntoRegistro(data); //Insertamos la data en la tabla Registro
+      minors.forEach(async minor => {
         if (minor.name != '') {
-          await InsertIntoMenores(pool, minor) //Insertamos la data en la tabla Menores
+          await InsertIntoMenores(minor) //Insertamos la data en la tabla Menores
         }
       });
     }
     //De lo contrario se agrega unicamento el registro
     else{
-      await InsertIntoRegistro(pool, data); //Insertamos la data en la tabla Registro
+      await InsertIntoRegistro(data); //Insertamos la data en la tabla Registro
     }
     console.log('Form submitted')
   } catch (error) {

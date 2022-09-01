@@ -6,7 +6,7 @@ Este formulario esta hecho con las siguientes tecnologias:
 - HTML5
 - CSS
 - Express(NodeJS)
-- SQL Server
+- MySQL
 
 ## Instalación
 
@@ -23,13 +23,13 @@ Despues configurar las variables de entorno en un archivo .env
 
 ```sh
 PORT = {SERVER_PORT}
-DB_USER = {SQLSERVER_DB_USER}
-PASSWORD = {SQLSERVER_DB_PASSWORD}
-SQL_SERVER = {SQL_SERVER}
-SQL_DATABASE = {SQL_DATABASE}
+DB_USER = {MYSQL_DB_USER}
+PASSWORD = {MYSQL_DB_PASSWORD}
+MYSQL_HOST = {MYSQL_HOST}
+MYSQL_DATABASE = {MYSQL_DATABASE}
 ```
 
-En caso de no tener la base de datos creada, consulte el archivo "FormularioNavidadSQL.sql" para crear la base de datos.
+En caso de no tener la base de datos creada, consulte el archivo "FormularioNavidadMYSQL.sql" para crear la base de datos.
 
 Una vez esten listas la base de datos y las variables de entorno, ejecutamos el siguiento comando:
 
