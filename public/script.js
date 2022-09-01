@@ -12,9 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  const form = document.getElementById('main_form');
-  
-  form.addEventListener('submit', (e) => {
-    alert('El formulario enviado correctamente')
-  })
 })
