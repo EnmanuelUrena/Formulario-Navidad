@@ -11,10 +11,4 @@ document.addEventListener('DOMContentLoaded', () => {
       checkminor.style.display = 'none';
     }
   })
-
-  const form = document.getElementById('main_form');
-  
-  form.addEventListener('submit', (e) => {
-    
-  })
 })
