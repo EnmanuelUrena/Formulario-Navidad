@@ -12,7 +12,7 @@ Este formulario esta hecho con las siguientes tecnologias:
 
 El formulario requiere [Node.js](https://nodejs.org/) v16+ para correr.
 
-Instalar todas las dependencias e iniciar el servidor.
+Instalar todas las dependencias.
 
 ```sh
 cd formulario-navidad
